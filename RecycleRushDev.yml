@@ -79,14 +79,14 @@ Children:
           default: '0'
           name: Forward PCM (Solenoid)
           validators: &id005 [Solenoid]
-          value: '0'
+          value: '1'
         Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: &id006 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
             '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
           default: '0'
           name: Reverse PCM (Solenoid)
           validators: &id007 [Solenoid]
-          value: '0'
+          value: '1'
         Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: &id008 ['0', '1', '2', '3', '4', '5', '6', '7']
           default: '0'
@@ -126,13 +126,13 @@ Children:
           default: '0'
           name: Reverse Channel (Solenoid)
           validators: *id009
-          value: '1'
+          value: '3'
         Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id010
           default: '0'
           name: Forward Channel (Solenoid)
           validators: *id011
-          value: '0'
+          value: '2'
       Base: Double Solenoid
       Name: TopPnuematic
     - Children: []
@@ -142,13 +142,13 @@ Children:
           default: '0'
           name: Forward PCM (Solenoid)
           validators: *id005
-          value: '0'
+          value: '1'
         Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id006
           default: '0'
           name: Reverse PCM (Solenoid)
           validators: *id007
-          value: '0'
+          value: '1'
         Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id008
           default: '0'
@@ -177,7 +177,7 @@ Children:
           default: '0'
           name: PCM ID
           validators: [PCMCompID]
-          value: '0'
+          value: '1'
       Base: Compressor
       Name: Compressor
     Properties:
@@ -191,6 +191,80 @@ Children:
         name: Default Command, type: Command, validators: null, value: RearShoulderStop}
     Base: Subsystem
     Name: RearShoulder
+  - Children: []
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+    Base: Subsystem
+    Name: Elevator
+  - Children:
+    - Children: []
+      Properties:
+        Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id004
+          default: '0'
+          name: Forward PCM (Solenoid)
+          validators: *id005
+          value: '0'
+        Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id006
+          default: '0'
+          name: Reverse PCM (Solenoid)
+          validators: *id007
+          value: '0'
+        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id008
+          default: '0'
+          name: Reverse Channel (Solenoid)
+          validators: *id009
+          value: '1'
+        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id010
+          default: '0'
+          name: Forward Channel (Solenoid)
+          validators: *id011
+          value: '0'
+      Base: Double Solenoid
+      Name: ClawPneumatic
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: ToteClawOpen}
+    Base: Subsystem
+    Name: ToteClaw
+  - Children:
+    - Children: []
+      Properties:
+        Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id004
+          default: '0'
+          name: Forward PCM (Solenoid)
+          validators: *id005
+          value: '0'
+        Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id006
+          default: '0'
+          name: Reverse PCM (Solenoid)
+          validators: *id007
+          value: '0'
+        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id008
+          default: '0'
+          name: Reverse Channel (Solenoid)
+          validators: *id009
+          value: '2'
+        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id010
+          default: '0'
+          name: Forward Channel (Solenoid)
+          validators: *id011
+          value: '3'
+      Base: Double Solenoid
+      Name: ClawPnuematic
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: ContainerClawOpen}
+    Base: Subsystem
+    Name: ContainerClaw
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -402,6 +476,38 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: RearShoulderGoToBottom
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: ToteClaw}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ToteClawOpen
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: ToteClaw}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ToteClawClose
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: ContainerClaw}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ContainerClawOpen
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: ContainerClaw}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ContainerClawClose
   Properties: {}
   Base: Commands
   Name: Commands
