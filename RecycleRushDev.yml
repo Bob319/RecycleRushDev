@@ -194,7 +194,7 @@ Children:
   - Children: []
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: ElevatorDisplay}
     Base: Subsystem
     Name: Elevator
   - Children:
@@ -217,13 +217,13 @@ Children:
           default: '0'
           name: Reverse Channel (Solenoid)
           validators: *id009
-          value: '1'
+          value: '0'
         Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id010
           default: '0'
           name: Forward Channel (Solenoid)
           validators: *id011
-          value: '0'
+          value: '1'
       Base: Double Solenoid
       Name: ClawPneumatic
     Properties:
@@ -251,13 +251,13 @@ Children:
           default: '0'
           name: Reverse Channel (Solenoid)
           validators: *id009
-          value: '2'
+          value: '3'
         Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id010
           default: '0'
           name: Forward Channel (Solenoid)
           validators: *id011
-          value: '3'
+          value: '2'
       Base: Double Solenoid
       Name: ClawPnuematic
     Properties:
@@ -508,6 +508,14 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: ContainerClawClose
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Elevator}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ElevatorDisplay
   Properties: {}
   Base: Commands
   Name: Commands

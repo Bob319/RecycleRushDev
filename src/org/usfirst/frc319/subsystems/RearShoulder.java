@@ -41,7 +41,7 @@ public class RearShoulder extends Subsystem {
 		  
 		rearShoulderMotor.changeControlMode(ControlMode.Position);
 		rearShoulderMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		rearShoulderMotor.setPID(50, 0, 0);
+		rearShoulderMotor.setPID(1, 0, 0);
 		rearShoulderMotor.reverseSensor(true);
 	}
 

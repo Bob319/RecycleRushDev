@@ -42,14 +42,14 @@ public class PnuematicSystem extends Subsystem {
     }
     public void compressorOn() {
     	compressor.setClosedLoopControl(true);
-    	System.out.println("Current - "+ compressor.getCompressorCurrent());
-    	System.out.println("Shorted Stickys - "+compressor.getCompressorShortedStickyFault());
-    	System.out.println("Shorted Faults - "+compressor.getCompressorShortedFault());
-    	System.out.println("Pressure switch value - "+compressor.getPressureSwitchValue());
+    	//System.out.println("Current - "+ compressor.getCompressorCurrent());
+    	//System.out.println("Shorted Stickys - "+compressor.getCompressorShortedStickyFault());
+    	//System.out.println("Shorted Faults - "+compressor.getCompressorShortedFault());
+    	//System.out.println("Pressure switch value - "+compressor.getPressureSwitchValue());
     }
     public void compressorOff() {
     	compressor.setClosedLoopControl(false);
-    	System.out.println("Pressure - "+compressor.getPressureSwitchValue());
+    	//System.out.println("Pressure - "+compressor.getPressureSwitchValue());
     }
 }
 
