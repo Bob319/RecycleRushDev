@@ -60,8 +60,8 @@ public class DriveTrain extends Subsystem {
     	} else {
     		scaledRotateValue = (rotateValue * rotateValue);
     	}
-    	robotDrive.arcadeDrive(scaledMoveValue, scaledRotateValue);
-    	
+    	robotDrive.arcadeDrive(-scaledMoveValue* 0.7, scaledRotateValue);
+    	 //Notice the minus in ^ front of the scaledMoveValue
     }
 }
 

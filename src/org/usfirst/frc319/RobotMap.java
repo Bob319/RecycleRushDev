@@ -16,10 +16,12 @@ package org.usfirst.frc319;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import java.util.Vector;
@@ -39,6 +41,8 @@ public class RobotMap {
     public static DoubleSolenoid rearArmTopPnuematic;
     public static DoubleSolenoid rearArmBottomPnuematic;
     public static Compressor pnuematicSystemCompressor;
+    public static Ultrasonic elevatorLeftToteDetector;
+    public static Ultrasonic elevatorRightToteDetector;
     public static DoubleSolenoid toteClawClawPneumatic;
     public static DoubleSolenoid containerClawClawPnuematic;
 
@@ -75,6 +79,12 @@ public class RobotMap {
         
         pnuematicSystemCompressor = new Compressor(1);
         
+        
+        elevatorLeftToteDetector = new Ultrasonic(4, 5);
+        LiveWindow.addSensor("Elevator", "LeftToteDetector", elevatorLeftToteDetector);
+        
+        elevatorRightToteDetector = new Ultrasonic(6, 7);
+        LiveWindow.addSensor("Elevator", "RightToteDetector", elevatorRightToteDetector);
         
         toteClawClawPneumatic = new DoubleSolenoid(0, 1, 0);      
         LiveWindow.addActuator("ToteClaw", "ClawPneumatic", toteClawClawPneumatic);
